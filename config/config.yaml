@@ -1,0 +1,15 @@
+defaults:
+  - _self_
+  - data: data_default
+  - general: general_default
+  - mamba: mamba_default
+  - lora: lora_default
+  - hg: hg_default
+  - lg: lg_default
+  - wandb: wandb_default
+  - override hydra/hydra_logging: disabled
+  - override hydra/job_logging: disabled
+hydra:
+  output_subdir: null
+  run:
+    dir: .

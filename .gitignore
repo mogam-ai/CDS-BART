@@ -1,0 +1,99 @@
+# parameter grid search
+change_parameter.py
+change_parameter2.py
+
+# IDE Settings files
+.vscode/
+.idea/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+# IPython
+profile_default/
+ipython_config.py
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow
+__pypackages__/
+
+*.pyc
+*.pyo
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+# C extensions
+*.so
+
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+.DS_Store
+
+# /src/notes
+
+out/
+**/outputs/
+lnp_results*/
+
+# PyCharm
+.idea/
+
+# wandb
+.wandb/
+**/wandb/
+
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+
+checkpoints/
+**/checkpoints/
+
+
+lightning_logs/
+**/lightning_logs/
+
+.pytest_cache/**
+**/.pytest_cache/
+
+
+#checkpoints
+checkpoints/
+**/checkpoints/
+
+wandb/
+**/wandb/
+
+notes/
+**/notes
+
+data/
+
+
