@@ -4,18 +4,43 @@
 Repository for the paper "CDS-BART: A BART-based model for codon-optimized protein sequence generation".
 
 ## Overview
-This repository contains the code for training and evaluating the CDS-BART model, which is a BART-based model for generating codon-optimized protein sequences. The model is designed to improve the efficiency of protein synthesis by optimizing the codon usage of the generated sequences.
-
+This repository contains the code for training and evaluating the CDS-BART model, which is a BART-based model. The model is predict mRNA downstream of tasks. The model is trained on a large dataset of mRNA sequences.
 ### Installation
  
 Dependency management is using conda. To create the environment, run:
-'''
+```
+conda env create -f environment.yaml
 
-'''
+```
 
+## Pretrain 
 
 ```bash
 
-python src/run_finetune.py +experiment=benchmark_codon_bert.yaml
+python src/run_pretrain.py +experiment=pretrain.yaml
 
+```
+
+## Finetune
+
+```bash
+python src/run_finetune.py +experiment=finetune_codon_bert.yaml
+
+```
+
+
+## Citation
+If you find the model useful in your research, please cite our paper:
+```bibtex
+
+@article{your_paper,
+  title={CDS-BART: A BART-based model for codon-optimized protein sequence generation},
+  author={Your Name},
+  journal={Bioninformatics: Applicaiton Notes},
+  year={2025},
+  volume={},
+  number={},
+  pages={},
+  publisher={.}
+}
 ```

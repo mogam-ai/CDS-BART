@@ -1,0 +1,53 @@
+# @package _global_
+general:
+  seed: 17
+  project_name: Ecoli_classification_seq2seq(ckp2)_basic
+  run_name: Ecoli_classification_2
+  checkpoint_path: /fsx/s3/project/P240002_mRNA_LLM/checkpoints/finetune
+  num_gpus: 1
+  n_cpus: 10
+  n_epochs: 40
+wandb:
+  entity: "mogam-research"
+  project: ${general.project_name}
+  name: ${general.run_name}
+  tags:
+  - rna
+  - finetune
+  - multi class
+data:
+  datapath: /fsx/s3/project/P240002_mRNA_LLM/evaluation/codonbert_dataset/E.Coli_proteins_train_val_test
+  tokenizer_path: /fsx/s3/project/P240002_mRNA_LLM/rna_data/tokens/rna_spmbpe_60M/BartSPBPETokenizerFast
+  pretrained: /fsx/s3/project/P240002_mRNA_LLM/checkpoints/bart_seq2seq_noise_850_large_last/checkpoint-316395
+  label_name: 'y'
+  max_len: 850
+  vocab_size: 4096
+  batch_size: 64
+  num_workers: 30
+  pin_memory: true
+hg:
+  training:
+    output_dir: ${general.checkpoint_path}/${general.run_name}
+    overwrite_output_dir: true
+    num_train_epochs: ${general.n_epochs}
+    do_train: true
+    do_eval: true
+    eval_strategy: epoch
+    save_strategy: epoch
+    per_device_train_batch_size: ${data.batch_size}
+    per_device_eval_batch_size: ${data.batch_size}
+    logging_steps: 50
+    adam_beta1: 0.9
+    adam_beta2: 0.999
+    adam_epsilon: 1.0e-08
+    weight_decay: 0.01
+    gradient_accumulation_steps: 1
+    dataloader_num_workers: 10
+    metric_for_best_model: eval_loss
+    report_to: wandb
+    greater_is_better: false
+    load_best_model_at_end: true
+    lr_scheduler_type: linear
+    max_grad_norm: 1.0
+    warmup_ratio: 0.1
+    learning_rate: 2.0e-05
