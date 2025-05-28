@@ -1,8 +1,7 @@
-# from utils.metrics import (
-#     MetricsModule,
-#     compute_multi_class_classification_metrics,
-#     compute_regression_metrics,
-# )
+from utils.metrics import (  # MetricsModule,
+    compute_multi_class_classification_metrics,
+    compute_regression_metrics,
+)
 from utils.utils import get_time, scale
 
 __all__ = [
@@ -10,6 +9,6 @@ __all__ = [
     "scale",
     # "MultiDistTrainer",
     # "MetricsModule",
-    # "compute_regression_metrics",
-    # "compute_multi_class_classification_metrics",
+    "compute_regression_metrics",
+    "compute_multi_class_classification_metrics",
 ]
