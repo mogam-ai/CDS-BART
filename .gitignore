@@ -64,10 +64,6 @@ lnp_results*/
 # PyCharm
 .idea/
 
-# wandb
-.wandb/
-**/wandb/
-
 
 # Jupyter Notebook
 .ipynb_checkpoints

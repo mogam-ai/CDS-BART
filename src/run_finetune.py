@@ -8,7 +8,8 @@ from watermark import watermark
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
-print("start")
+print("start1")
+
 
 @hydra.main(version_base="1.1", config_path="../config", config_name="config")
 def main(cfg: DictConfig):
@@ -23,7 +24,6 @@ def main(cfg: DictConfig):
 
     # Load dataset
     dataset = load_from_disk(config.data.dataset_path)
-
 
     print("END")
 
