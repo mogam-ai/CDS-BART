@@ -2,7 +2,6 @@ defaults:
   - _self_
   - data: data_default
   - general: general_default
-  - mamba: mamba_default
   - lora: lora_default
   - hg: hg_default
   - lg: lg_default
