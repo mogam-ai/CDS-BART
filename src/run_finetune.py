@@ -1,29 +1,14 @@
 import os
-from functools import partial
-from pathlib import Path
 
 import hydra
-import torch
-import wandb
 from datasets import load_from_disk
 from omegaconf import DictConfig, OmegaConf
-from peft import LoraConfig, TaskType, get_peft_model
-from tokenizers import Tokenizer
-from torch.utils.data import DataLoader
-from transformers import (
-    BartForSequenceClassification,
-    BartTokenizerFast,
-    DataCollatorWithPadding,
-    EarlyStoppingCallback,
-    Trainer,
-    TrainingArguments,
-)
+from transformers import BartTokenizerFast
 from watermark import watermark
-
-from utils import compute_multi_class_classification_metrics, compute_regression_metrics
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
+print("start")
 
 @hydra.main(version_base="1.1", config_path="../config", config_name="config")
 def main(cfg: DictConfig):
@@ -39,7 +24,6 @@ def main(cfg: DictConfig):
     # Load dataset
     dataset = load_from_disk(config.data.dataset_path)
 
-    # Load the model
 
     print("END")
 
