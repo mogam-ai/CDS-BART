@@ -36,9 +36,8 @@ def main(cfg: DictConfig):
     # Load the tokenizer for mRNA
     tokenizer = BartTokenizerFast.from_pretrained(config.data.tokenizer_path)
 
-    # Load dataset  
+    # Load dataset
     dataset = load_from_disk(config.data.dataset_path)
-
 
     # Load the model
 
