@@ -30,8 +30,10 @@ python src/run_finetune.py +experiment=finetune_codon_bert.yaml
 
 Finetune data:
 1. mRFP expression data set(Nieuwkoop et al. 2023) :
+
 profiles protein production levels for several gene variants in Escherichia coli (E. coli). It measures the expression of monomeric Red Fluorescent Protein (mRFP), providing insights into how different gene variants influence protein production levels in bacterial systems.
 2. Fungal expression data set (Grigoriev et al. 2014) :
+
 provides a valuable resource for studying gene expression and functional genomics in fungal species.
 3. E.coli protein data set (Ding et al. 2022) :
 comprises experimental data for protein expression levels in E. coli, categorized as low, medium, or high expression. Specifically, it contains 2308 low expression, 2067 medium expression, and 1973 high expression data points, facilitating the study of protein production dynamics in bacterial cells.
