@@ -28,6 +28,9 @@ python src/run_finetune.py +experiment=finetune_codon_bert.yaml
 
 ```
 
+Finetune data:
+1. mRFP expression data set(Nieuwkoop et al. 2023) profiles protein production levels for several gene variants in E.coli.
+2. 
 
 ## Citation
 If you find the model useful in your research, please cite our paper:
