@@ -5,14 +5,53 @@ Repository for the paper "CDS-BART: A BART-based model for codon-optimized prote
 
 ## Overview
 This repository contains the code for training and evaluating the CDS-BART model, which is a BART-based model. The model is predict mRNA downstream of tasks. The model is trained on a large dataset of mRNA sequences.
-### Installation
- 
-Dependency management is using conda. To create the environment, run:
-```
-conda env create -f environment.yaml
+
+<!-- Installation -->
+## Installation
+
+To install the necessary packages for this project, we use [`uv`](https://github.com/username/uv). This package management tool simplifies dependency management and ensures a reproducible environment.
+<jp align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- Installation -->
+### Steps to Install Packages
+
+1. **Clone the Repository**
+   First, clone the repository to your local machine using the following command:
+
+   ```bash
+   git clone https://github.com/mogam-ai/CDS-BART
+
+
+2. **Navigate to the Project Directory**
+   Change into the project directory:
+
+   ```bash
+   cd CDS-BART
+   ```
+3. **Install Dependencies**
+   Use the `uv` package manager to install the required dependencies. Run the following command:
+
+   ```bash
+   uv sync
+   ```
+
+  This command will read the `uv.yaml` file in the project directory and install all specified packages. 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- Finetune -->
+## Finetune
+
+```bash
+python src/run_finetune.py +experiment=mRFP_exxpression.yaml
 
 ```
+or 
+```bash 
+uv run python src/run_finetune.py +experiment=mRFP_exxpression
+```
 
+<!-- Pretrain -->
 ## Pretrain 
 
 ```bash
@@ -21,14 +60,10 @@ python src/run_pretrain.py +experiment=pretrain.yaml
 
 ```
 
-## Finetune
 
-```bash
-python src/run_finetune.py +experiment=finetune_codon_bert.yaml
 
-```
+## Finetune data:
 
-Finetune data:
 1. mRFP expression data set(Nieuwkoop et al. 2023) : profiles protein production levels for several gene variants in Escherichia coli(E. coli). It measures the expression of monomeric Red Fluorescent Protein (mRFP), providing insights into how different gene variants influence protein production levels in bacterial systems.
 2. Fungal expression data set (Grigoriev et al. 2014) :
 provides a valuable resource for studying gene expression and functional genomics in fungal species.
