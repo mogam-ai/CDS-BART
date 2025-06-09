@@ -1,5 +1,5 @@
-from transformers import BartModel, BartTokenizerFast
 from datasets import load_dataset
+from transformers import BartModel
 
 auth_token = "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"
 

@@ -102,7 +102,7 @@ def main(cfg: DictConfig):
         else compute_multi_class_classification_metrics
     )
 
-    if config.general.wandb_config:
+    if config.general.wandb:
         import wandb
 
         # Initialize WandB
