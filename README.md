@@ -17,7 +17,7 @@ To install the necessary packages for this project, we use [`uv`](https://docs.a
 ### Steps to Install Packages
 
 1. **Install uv**
-   If you haven't installed `uv` yet, you can do so by following the instructions on the [uv installation page](https://docs.astral.sh/uv/getting-started/installation/).
+   If you haven't installed `uv` yet, you can do so by following the instructions on the [uv installation page](https://docs.astral.sh/uv/getting-started/installation/). Run follwowing command in your terminal to install `uv`:
 
    ```bash
    curl -LsSf https://astral.sh/uv/install.sh | sh
