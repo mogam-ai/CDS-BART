@@ -84,13 +84,13 @@ lightning_logs/
 checkpoints/
 **/checkpoints/
 
-# wandb/
-# **/wandb/
+wandb/
+**/wandb/
 
 notes/
 **/notes
 
-
+test.py
 
 
 .env

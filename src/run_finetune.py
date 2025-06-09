@@ -102,15 +102,15 @@ def main(cfg: DictConfig):
         else compute_multi_class_classification_metrics
     )
 
-    if config.general.wandb:
+    if config.general.wandb_config:
         import wandb
 
         # Initialize WandB
         wandb.init(
-            entity=config.wandb.entity,
-            project=config.wandb.project,
-            name=config.wandb.name,
-            tags=config.wandb.tags,
+            entity=config.wandb_config.entity,
+            project=config.wandb_config.project,
+            name=config.wandb_config.name,
+            tags=config.wandb_config.tags,
             config=config,
         )
         print("WandB initialized successfully.")

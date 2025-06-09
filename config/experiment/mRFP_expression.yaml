@@ -15,7 +15,7 @@ general:
   num_labels: 1
   wandb: false
 
-wandb:
+wandb_config:
   entity: "mogam-research"
   project: ${general.project_name}
   name: ${general.run_name}
