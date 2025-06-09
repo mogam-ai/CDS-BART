@@ -72,6 +72,8 @@ python src/run_pretrain.py +experiment=pretrain.yaml
 <!-- Finetune datasets -->
 ## Finetune datasets:
 
+We used several datasets for finetuning the CDS-BART model. These datasets are crucial for training the model to understand and generate codon-optimized protein sequences. Each dataset is described below and can be accessed our huggingface repository [here](https://huggingface.co/mogam-ai).
+
 1. mRFP expression data set(Nieuwkoop et al. 2023) : profiles protein production levels for several gene variants in Escherichia coli(E. coli). It measures the expression of monomeric Red Fluorescent Protein (mRFP), providing insights into how different gene variants influence protein production levels in bacterial systems.
 2. Fungal expression data set (Grigoriev et al. 2014) :
 provides a valuable resource for studying gene expression and functional genomics in fungal species.
@@ -87,16 +89,14 @@ encompasses a collection of mRNA sequences optimized for structural features, st
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- Finetune datasets -->
-## Datasets used in this research
+## Dataset citations
 
-Finetuning dataset:
 1. Nieuwkoop, Thijs, et al. "Revealing determinants of translation efficiency via whole-gene codon randomization and machine learning." Nucleic acids research 51.5 (2023): 2363-2376.
 2.
 3. Ding, Zundan, et al. "MPEPE, a predictive approach to improve protein expression in E. coli based on deep learning." Computational and Structural Biotechnology Journal 20 (2022): 1142-1153.
 4. Diez, Michay, et al. "iCodon customizes gene expression based on the codon composition." Scientific Reports 12.1 (2022): 12126.
 5. Groher, Ann-Christin, et al. "Tuning the performance of synthetic riboswitches using machine learning." ACS synthetic biology 8.1 (2018): 34-44
 6. Leppek, Kathrin, et al. "Combinatorial optimization of mRNA structure, stability, and translation for RNA-based therapeutics." Nature communications 13.1 (2022): 1536.
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
