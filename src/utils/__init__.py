@@ -7,8 +7,6 @@ from utils.utils import get_time, scale
 __all__ = [
     "get_time",
     "scale",
-    # "MultiDistTrainer",
-    # "MetricsModule",
     "compute_regression_metrics",
     "compute_multi_class_classification_metrics",
 ]

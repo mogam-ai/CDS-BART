@@ -1,8 +1,5 @@
-
 import torch
 from evaluate import load
-from scipy.stats import pearsonr
-from sklearn.metrics import average_precision_score
 
 
 def compute_regression_metrics(pred):
@@ -59,8 +56,8 @@ def compute_multi_class_classification_metrics(pred):
     probability = torch.softmax(predictions, dim=-1).numpy()[:, 1]
     predictions = torch.argmax(predictions, axis=-1).numpy()
 
-    auroc_metric = load("roc_auc", trust_remote_code=True)
-    auprc_metric = average_precision_score
+    # auroc_metric = load("roc_auc", trust_remote_code=True)
+    # auprc_metric = average_precision_score
     precision_metric = load("precision", trust_remote_code=True)
     recall_metric = load("recall", trust_remote_code=True)
     f1_metric = load("f1", trust_remote_code=True)
