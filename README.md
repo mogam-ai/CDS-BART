@@ -35,6 +35,10 @@ To install the necessary packages for this project, we use [`uv`](https://github
    ```bash
    uv sync
    ```
+4. **Activate environment**
+   ```bash
+   source .venv/bin/activate
+   ```
 
   This command will read the `uv.yaml` file in the project directory and install all specified packages. 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
