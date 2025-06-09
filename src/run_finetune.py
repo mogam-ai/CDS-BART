@@ -14,6 +14,7 @@ from transformers import (
 from watermark import watermark
 
 from utils import (
+    apply_scaling,
     compute_multi_class_classification_metrics,
     compute_regression_metrics,
     get_time,
@@ -33,14 +34,22 @@ def main(cfg: DictConfig):
 
     # Load the tokenizer for mRNA
     tokenizer = BartTokenizerFast.from_pretrained(config.data.tokenizer_name_or_path)
-    print(f"Tokenizer loaded from {config.data.tokenizer_name_or_path}")
-    print(f"Tokenizer vocab size: {tokenizer.vocab_size}")
-    print(f"Tokenizer model max length: {tokenizer.model_max_length}")
-    print(f"Tokenizer special tokens: {tokenizer.special_tokens_map}")
 
     # Load dataset or use load_from_disk for custom datasets
     dataset = load_dataset(config.data.dataset_name_or_path)
-    print(dataset)
+
+    if config.data.get("scaling_method", None) is not None:
+        # Apply scaling to the dataset
+        print("Applying scaling to the dataset...")
+        dataset = apply_scaling(
+            dataset,
+            scaling_method=config.data.scaling_method,
+        )
+        print("Dataset scaling applied successfully.")
+
+    else:
+        print("No scaling method specified, using the dataset as is.")
+        dataset = dataset
 
     def prepocess(example, label_name):
         seq = example["seq"]
@@ -131,26 +140,6 @@ def main(cfg: DictConfig):
         print("WandB finished successfully.")
 
     print("END")
-
-
-if __name__ == "__main__":
-    main()
-
-
-if __name__ == "__main__":
-    main()
-
-
-if __name__ == "__main__":
-    main()
-
-
-if __name__ == "__main__":
-    main()
-
-
-if __name__ == "__main__":
-    main()
 
 
 if __name__ == "__main__":

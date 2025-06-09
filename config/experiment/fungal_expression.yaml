@@ -29,7 +29,6 @@ data:
   model_name_or_path: ${general.repo_id}/${general.model_name}
   tokenizer_name_or_path: ${general.repo_id}/${general.model_name}
   label_name: 'y'
-  scaling_method: 'no'
   max_len: 850
   vocab_size: 4096
   batch_size: 64
