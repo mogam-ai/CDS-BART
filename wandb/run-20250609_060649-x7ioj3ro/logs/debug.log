@@ -1,0 +1,212 @@
+2025-06-09 06:06:49,268 INFO    MainThread:235767 [wandb_setup.py:_flush():70] Current SDK version is 0.19.11
+2025-06-09 06:06:49,269 INFO    MainThread:235767 [wandb_setup.py:_flush():70] Configure stats pid to 235767
+2025-06-09 06:06:49,269 INFO    MainThread:235767 [wandb_setup.py:_flush():70] Loading settings from /fsx/home/hermee/.config/wandb/settings
+2025-06-09 06:06:49,269 INFO    MainThread:235767 [wandb_setup.py:_flush():70] Loading settings from /fsx/home/hermee/projects/python/CDS-BART/wandb/settings
+2025-06-09 06:06:49,269 INFO    MainThread:235767 [wandb_setup.py:_flush():70] Loading settings from environment variables
+2025-06-09 06:06:49,269 INFO    MainThread:235767 [wandb_init.py:setup_run_log_directory():724] Logging user logs to /fsx/home/hermee/projects/python/CDS-BART/wandb/run-20250609_060649-x7ioj3ro/logs/debug.log
+2025-06-09 06:06:49,270 INFO    MainThread:235767 [wandb_init.py:setup_run_log_directory():725] Logging internal logs to /fsx/home/hermee/projects/python/CDS-BART/wandb/run-20250609_060649-x7ioj3ro/logs/debug-internal.log
+2025-06-09 06:06:49,270 INFO    MainThread:235767 [wandb_init.py:init():852] calling init triggers
+2025-06-09 06:06:49,270 INFO    MainThread:235767 [wandb_init.py:init():857] wandb.init called with sweep_config: {}
+config: {'_metadata': ContainerMetadata(ref_type=typing.Any, object_type=<class 'dict'>, optional=True, key=None, flags={}, flags_root=False, resolver_cache=defaultdict(<class 'dict'>, {}), key_type=typing.Any, element_type=typing.Any), '_parent': None, '_flags_cache': {'struct': None, 'convert': None}, '_content': {'data': {'dataset_name_or_path': '${general.repo_id}/${general.dataset_name}', 'model_name_or_path': '${general.repo_id}/${general.model_name}', 'tokenizer_name_or_path': '${general.repo_id}/${general.model_name}', 'label_name': 'y', 'scaling_method': 'std', 'max_len': 850, 'vocab_size': 4096, 'batch_size': 64, 'num_workers': 30, 'pin_memory': True}, 'general': {'seed': 17, 'project_name': 'cds_bart_project', 'run_name': 'finetune_mRFP_expression', 'checkpoint_path': '/fsx/s3/project/P240002_mRNA_LLM/checkpoints/finetune/submission', 'num_gpus': 1, 'n_cpus': 10, 'n_epochs': 40, 'repo_id': 'mogam-ai', 'model_name': 'CDS-BART-denoising', 'dataset_name': 'CDS-BART-mRFP-expression', 'task_type': 'regression', 'task_name': 'mRFP_expression', 'num_labels': 1, 'wandb': True}, 'lora': {}, 'hg': {'training': {'output_dir': '${general.checkpoint_path}/${general.run_name}', 'overwrite_output_dir': True, 'num_train_epochs': '${general.n_epochs}', 'do_train': True, 'do_eval': True, 'eval_strategy': 'epoch', 'save_strategy': 'epoch', 'per_device_train_batch_size': '${data.batch_size}', 'per_device_eval_batch_size': '${data.batch_size}', 'logging_steps': 50, 'adam_beta1': 0.9, 'adam_beta2': 0.999, 'adam_epsilon': 1e-08, 'weight_decay': 0.01, 'gradient_accumulation_steps': 1, 'dataloader_num_workers': 10, 'metric_for_best_model': 'eval_loss', 'report_to': 'wandb', 'greater_is_better': False, 'load_best_model_at_end': True, 'lr_scheduler_type': 'linear', 'max_grad_norm': 1.0, 'warmup_ratio': 0.1, 'learning_rate': 2e-05}}, 'lg': {}, 'wandb': {'entity': 'mogam-research', 'project': '${general.project_name}', 'name': '${general.run_name}', 'tags': ['cds-bart', 'finetune', '${general.task_type}', '${general.task_name}']}}, '_wandb': {}}
+2025-06-09 06:06:49,270 INFO    MainThread:235767 [wandb_init.py:init():893] starting backend
+2025-06-09 06:06:49,270 INFO    MainThread:235767 [wandb_init.py:init():897] sending inform_init request
+2025-06-09 06:06:49,298 INFO    MainThread:235767 [backend.py:_multiprocessing_setup():101] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2025-06-09 06:06:49,298 INFO    MainThread:235767 [wandb_init.py:init():907] backend started and connected
+2025-06-09 06:06:49,305 INFO    MainThread:235767 [wandb_init.py:init():1005] updated telemetry
+2025-06-09 06:06:49,326 INFO    MainThread:235767 [wandb_init.py:init():1029] communicating run to backend with 90.0 second timeout
+2025-06-09 06:06:49,886 INFO    MainThread:235767 [wandb_init.py:init():1104] starting run threads in backend
+2025-06-09 06:06:50,293 INFO    MainThread:235767 [wandb_run.py:_console_start():2573] atexit reg
+2025-06-09 06:06:50,294 INFO    MainThread:235767 [wandb_run.py:_redirect():2421] redirect: wrap_raw
+2025-06-09 06:06:50,294 INFO    MainThread:235767 [wandb_run.py:_redirect():2490] Wrapping output streams.
+2025-06-09 06:06:50,294 INFO    MainThread:235767 [wandb_run.py:_redirect():2513] Redirects installed.
+2025-06-09 06:06:50,316 INFO    MainThread:235767 [wandb_init.py:init():1150] run started, returning control to user process
+2025-06-09 06:06:52,629 INFO    MainThread:235767 [wandb_run.py:_config_callback():1436] config_cb None None {'vocab_size': 4096, 'max_position_embeddings': 852, 'd_model': 768, 'encoder_ffn_dim': 3072, 'encoder_layers': 12, 'encoder_attention_heads': 12, 'decoder_ffn_dim': 3072, 'decoder_layers': 12, 'decoder_attention_heads': 12, 'dropout': 0.1, 'attention_dropout': 0.0, 'activation_dropout': 0.0, 'activation_function': 'gelu', 'init_std': 0.02, 'encoder_layerdrop': 0.0, 'decoder_layerdrop': 0.0, 'classifier_dropout': 0.0, 'use_cache': True, 'num_hidden_layers': 12, 'scale_embedding': True, 'return_dict': True, 'output_hidden_states': False, 'output_attentions': False, 'torchscript': False, 'torch_dtype': 'float32', 'use_bfloat16': False, 'tf_legacy_loss': False, 'pruned_heads': {}, 'tie_word_embeddings': True, 'chunk_size_feed_forward': 0, 'is_encoder_decoder': True, 'is_decoder': False, 'cross_attention_hidden_size': None, 'add_cross_attention': False, 'tie_encoder_decoder': False, 'max_length': 20, 'min_length': 0, 'do_sample': False, 'early_stopping': False, 'num_beams': 1, 'num_beam_groups': 1, 'diversity_penalty': 0.0, 'temperature': 1.0, 'top_k': 50, 'top_p': 1.0, 'typical_p': 1.0, 'repetition_penalty': 1.0, 'length_penalty': 1.0, 'no_repeat_ngram_size': 0, 'encoder_no_repeat_ngram_size': 0, 'bad_words_ids': None, 'num_return_sequences': 1, 'output_scores': False, 'return_dict_in_generate': False, 'forced_bos_token_id': None, 'forced_eos_token_id': 2, 'remove_invalid_values': False, 'exponential_decay_length_penalty': None, 'suppress_tokens': None, 'begin_suppress_tokens': None, 'architectures': ['BartModel'], 'finetuning_task': None, 'id2label': {0: 'LABEL_0'}, 'label2id': {'LABEL_0': 0}, 'tokenizer_class': None, 'prefix': None, 'bos_token_id': 0, 'pad_token_id': 1, 'eos_token_id': 2, 'sep_token_id': None, 'decoder_start_token_id': 2, 'task_specific_params': None, 'problem_type': None, '_name_or_path': 'mogam-ai/CDS-BART-denoising', 'transformers_version': '4.52.3', 'mask_token_id': 4, 'model_type': 'bart', 'output_dir': '/fsx/s3/project/P240002_mRNA_LLM/checkpoints/finetune/submission/finetune_mRFP_expression', 'overwrite_output_dir': True, 'do_train': True, 'do_eval': True, 'do_predict': False, 'eval_strategy': 'epoch', 'prediction_loss_only': False, 'per_device_train_batch_size': 64, 'per_device_eval_batch_size': 64, 'per_gpu_train_batch_size': None, 'per_gpu_eval_batch_size': None, 'gradient_accumulation_steps': 1, 'eval_accumulation_steps': None, 'eval_delay': 0, 'torch_empty_cache_steps': None, 'learning_rate': 2e-05, 'weight_decay': 0.01, 'adam_beta1': 0.9, 'adam_beta2': 0.999, 'adam_epsilon': 1e-08, 'max_grad_norm': 1.0, 'num_train_epochs': 40, 'max_steps': -1, 'lr_scheduler_type': 'linear', 'lr_scheduler_kwargs': {}, 'warmup_ratio': 0.1, 'warmup_steps': 0, 'log_level': 'passive', 'log_level_replica': 'warning', 'log_on_each_node': True, 'logging_dir': '/fsx/s3/project/P240002_mRNA_LLM/checkpoints/finetune/submission/finetune_mRFP_expression/runs/Jun09_06-06-47_ip-10-0-1-196', 'logging_strategy': 'steps', 'logging_first_step': False, 'logging_steps': 50, 'logging_nan_inf_filter': True, 'save_strategy': 'epoch', 'save_steps': 500, 'save_total_limit': None, 'save_safetensors': True, 'save_on_each_node': False, 'save_only_model': False, 'restore_callback_states_from_checkpoint': False, 'no_cuda': False, 'use_cpu': False, 'use_mps_device': False, 'seed': 42, 'data_seed': None, 'jit_mode_eval': False, 'use_ipex': False, 'bf16': False, 'fp16': False, 'fp16_opt_level': 'O1', 'half_precision_backend': 'auto', 'bf16_full_eval': False, 'fp16_full_eval': False, 'tf32': None, 'local_rank': 0, 'ddp_backend': None, 'tpu_num_cores': None, 'tpu_metrics_debug': False, 'debug': [], 'dataloader_drop_last': False, 'eval_steps': None, 'dataloader_num_workers': 10, 'dataloader_prefetch_factor': None, 'past_index': -1, 'run_name': '/fsx/s3/project/P240002_mRNA_LLM/checkpoints/finetune/submission/finetune_mRFP_expression', 'disable_tqdm': False, 'remove_unused_columns': True, 'label_names': None, 'load_best_model_at_end': True, 'metric_for_best_model': 'eval_loss', 'greater_is_better': False, 'ignore_data_skip': False, 'fsdp': [], 'fsdp_min_num_params': 0, 'fsdp_config': {'min_num_params': 0, 'xla': False, 'xla_fsdp_v2': False, 'xla_fsdp_grad_ckpt': False}, 'fsdp_transformer_layer_cls_to_wrap': None, 'accelerator_config': {'split_batches': False, 'dispatch_batches': None, 'even_batches': True, 'use_seedable_sampler': True, 'non_blocking': False, 'gradient_accumulation_kwargs': None}, 'deepspeed': None, 'label_smoothing_factor': 0.0, 'optim': 'adamw_torch', 'optim_args': None, 'adafactor': False, 'group_by_length': False, 'length_column_name': 'length', 'report_to': ['wandb'], 'ddp_find_unused_parameters': None, 'ddp_bucket_cap_mb': None, 'ddp_broadcast_buffers': None, 'dataloader_pin_memory': True, 'dataloader_persistent_workers': False, 'skip_memory_metrics': True, 'use_legacy_prediction_loop': False, 'push_to_hub': False, 'resume_from_checkpoint': None, 'hub_model_id': None, 'hub_strategy': 'every_save', 'hub_token': '<HUB_TOKEN>', 'hub_private_repo': None, 'hub_always_push': False, 'gradient_checkpointing': False, 'gradient_checkpointing_kwargs': None, 'include_inputs_for_metrics': False, 'include_for_metrics': [], 'eval_do_concat_batches': True, 'fp16_backend': 'auto', 'push_to_hub_model_id': None, 'push_to_hub_organization': None, 'push_to_hub_token': '<PUSH_TO_HUB_TOKEN>', 'mp_parameters': '', 'auto_find_batch_size': False, 'full_determinism': False, 'torchdynamo': None, 'ray_scope': 'last', 'ddp_timeout': 1800, 'torch_compile': False, 'torch_compile_backend': None, 'torch_compile_mode': None, 'include_tokens_per_second': False, 'include_num_input_tokens_seen': False, 'neftune_noise_alpha': None, 'optim_target_modules': None, 'batch_eval_metrics': False, 'eval_on_start': False, 'use_liger_kernel': False, 'eval_use_gather_object': False, 'average_tokens_across_devices': False}
+2025-06-09 06:06:52,632 INFO    MainThread:235767 [wandb_config.py:__setitem__():154] [no run ID] config set model/num_parameters = 203527681 - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7f683f6106e0>>
+2025-06-09 06:06:52,632 INFO    MainThread:235767 [wandb_run.py:_config_callback():1436] config_cb model/num_parameters 203527681 None
+2025-06-09 06:07:17,301 INFO    MsgRouterThr:235767 [mailbox.py:close():129] [no run ID] Closing mailbox, abandoning 1 handles.
+2025-06-09 06:07:18,069 ERROR   MainThread:235767 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/wandb_run.py", line 2500, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/wandb_run.py", line 1639, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/interface/interface.py", line 762, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+           ^^^^^^^^^^^^^^^^^^^^^
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-09 06:07:18,086 ERROR   MainThread:235767 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/wandb_run.py", line 2500, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/wandb_run.py", line 1639, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/interface/interface.py", line 762, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+           ^^^^^^^^^^^^^^^^^^^^^
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-09 06:07:18,092 ERROR   MainThread:235767 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/wandb_run.py", line 2500, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/wandb_run.py", line 1639, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/interface/interface.py", line 762, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+           ^^^^^^^^^^^^^^^^^^^^^
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-09 06:07:18,093 ERROR   MainThread:235767 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/wandb_run.py", line 2500, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/wandb_run.py", line 1639, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/interface/interface.py", line 762, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+           ^^^^^^^^^^^^^^^^^^^^^
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-09 06:07:18,093 ERROR   MainThread:235767 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/wandb_run.py", line 2500, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/wandb_run.py", line 1639, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/interface/interface.py", line 762, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+           ^^^^^^^^^^^^^^^^^^^^^
+BrokenPipeError: [Errno 32] Broken pipe
+2025-06-09 06:07:18,094 ERROR   MainThread:235767 [redirect.py:_on_write():664] [no run ID] error in stderr callback
+Traceback (most recent call last):
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/lib/redirect.py", line 662, in _on_write
+    cb(written_data)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/wandb_run.py", line 2500, in <lambda>
+    lambda data: self._console_raw_callback("stderr", data),
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/wandb_run.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/wandb_run.py", line 464, in wrapper_fn
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/wandb_run.py", line 1639, in _console_raw_callback
+    self._backend.interface.publish_output_raw(name, data)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/interface/interface.py", line 762, in publish_output_raw
+    self._publish_output_raw(o)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/interface/interface_shared.py", line 38, in _publish_output_raw
+    self._publish(rec)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/interface/interface_sock.py", line 39, in _publish
+    self._sock_client.send_record_publish(record)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/lib/sock_client.py", line 174, in send_record_publish
+    self.send_server_request(server_req)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/lib/sock_client.py", line 154, in send_server_request
+    self._send_message(msg)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/lib/sock_client.py", line 151, in _send_message
+    self._sendall_with_error_handle(header + data)
+  File "/fsx/home/hermee/projects/python/CDS-BART/.venv/lib/python3.12/site-packages/wandb/sdk/lib/sock_client.py", line 130, in _sendall_with_error_handle
+    sent = self._sock.send(data)
+           ^^^^^^^^^^^^^^^^^^^^^
+BrokenPipeError: [Errno 32] Broken pipe
