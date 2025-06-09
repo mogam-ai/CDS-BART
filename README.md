@@ -29,18 +29,21 @@ To install the necessary packages for this project, we use [`uv`](https://github
    ```bash
    cd CDS-BART
    ```
+   
 3. **Install Dependencies**
    Use the `uv` package manager to install the required dependencies. Run the following command:
 
    ```bash
    uv sync
    ```
+
+  This command will read the `project.toml` file in the project directory and install all specified packages. 
+
 4. **Activate environment**
    ```bash
    source .venv/bin/activate
    ```
 
-  This command will read the `uv.yaml` file in the project directory and install all specified packages. 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- Finetune -->
