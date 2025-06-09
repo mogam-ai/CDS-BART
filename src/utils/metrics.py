@@ -1,79 +1,61 @@
-import torch
-from evaluate import load
+import numpy as np
+import torch as th
+from scipy.stats import spearmanr
+from sklearn.metrics import (
+    accuracy_score,
+    average_precision_score,
+    f1_score,
+    mean_absolute_error,
+    mean_squared_error,
+    precision_score,
+    r2_score,
+    recall_score,
+    roc_auc_score,
+)
 
 
-def compute_regression_metrics(pred):
-    labels = pred.label_ids
-    predictions = (
-        pred.predictions[0] if len(pred.predictions) == 2 else pred.predictions
-    )
+def compute_regression_metrics(eval_pred):
+    if isinstance(eval_pred.predictions, tuple):
+        predictions = eval_pred.predictions[0]
+    else:
+        predictions = eval_pred.predictions
 
-    metric1 = load("r_squared", trust_remote_code=True)
-    metric2 = load("mae", trust_remote_code=True)
-    metric3 = load("mse", trust_remote_code=True)
-    metric4 = load("spearmanr", trust_remote_code=True)
+    labels = eval_pred.label_ids
 
-    r2 = metric1.compute(predictions=predictions, references=labels)
-    mae = metric2.compute(predictions=predictions, references=labels)["mae"]
-    mse = metric3.compute(predictions=predictions, references=labels)["mse"]
-    spearmanr = metric4.compute(predictions=predictions, references=labels)["spearmanr"]
+    predictions = predictions.reshape(-1)
+    labels = labels.reshape(-1)
 
+    mse = mean_squared_error(labels, predictions)
+    rmse = np.sqrt(mse)
+    mae = mean_absolute_error(labels, predictions)
+    r2 = r2_score(labels, predictions)
+    spearman_corr, _ = spearmanr(predictions, labels)
+    return {"mse": mse, "rmse": rmse, "mae": mae, "r2": r2, "spearmanr": spearman_corr}
+
+
+def compute_classification_metrics(eval_pred):
+    # 튜플에서 예측값 추출
+    if isinstance(eval_pred.predictions, tuple):
+        predictions = eval_pred.predictions[0]
+    else:
+        predictions = eval_pred.predictions
+
+    probability = th.softmax(predictions, dim=-1).numpy()[:, 1]
+    predictions = th.argmax(predictions, axis=-1).numpy()
+    labels = eval_pred.label_ids
+
+    predictions = predictions.reshape(-1)
+    labels = labels.reshape(-1)
+
+    auroc = roc_auc_score(labels, probability, multi_class="ovr")
+    auprc = average_precision_score(labels, probability)
+    precision = precision_score(labels, predictions)
+    recall = recall_score(labels, predictions)
+    f1 = f1_score(labels, predictions, average="macro")
+    accuracy = accuracy_score(labels, predictions)
     return {
-        "r2": r2,
-        "mae": mae,
-        "mse": mse,
-        "spearmanr": spearmanr,
-    }
-
-
-def compute_multi_class_classification_metrics(pred):
-    """
-    Compute various metrics for multi-class classification.
-
-    Args:
-    pred: The predictions object containing predicted labels and scores.
-
-    Returns:
-    dict: A dictionary containing the computed metrics:
-    - auroc: Area Under the Receiver Operating Characteristic curve.
-    - precision: Precision of the predictions.
-    - recall: Recall of the predictions.
-    - f1: F1 score of the predictions.
-    - accuracy: Accuracy of the predictions.
-    """
-    labels = pred.label_ids
-
-    predictions = torch.Tensor(
-        pred.predictions[0] if len(pred.predictions) == 2 else pred.predictions
-    )
-    probability = torch.softmax(predictions, dim=-1).numpy()[:, 1]
-    predictions = torch.argmax(predictions, axis=-1).numpy()
-
-    # auroc_metric = load("roc_auc", trust_remote_code=True)
-    # auprc_metric = average_precision_score
-    precision_metric = load("precision", trust_remote_code=True)
-    recall_metric = load("recall", trust_remote_code=True)
-    f1_metric = load("f1", trust_remote_code=True)
-    accuracy_metric = load("accuracy", trust_remote_code=True)
-
-    # auroc = auroc_metric.compute(prediction_scores=probability, references=labels)["roc_auc"]
-    # auprc = auprc_metric(labels, probability)
-    precision = precision_metric.compute(
-        predictions=predictions, references=labels, average="macro"
-    )["precision"]
-    recall = recall_metric.compute(
-        predictions=predictions, references=labels, average="macro"
-    )["recall"]
-    f1 = f1_metric.compute(predictions=predictions, references=labels, average="macro")[
-        "f1"
-    ]
-    accuracy = accuracy_metric.compute(predictions=predictions, references=labels)[
-        "accuracy"
-    ]
-
-    return {
-        # "auroc": auroc,
-        # "auprc": auprc,
+        "auroc": auroc,
+        "auprc": auprc,
         "precision": precision,
         "recall": recall,
         "f1": f1,

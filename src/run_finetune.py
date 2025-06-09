@@ -15,7 +15,7 @@ from watermark import watermark
 
 from utils import (
     apply_scaling,
-    compute_multi_class_classification_metrics,
+    compute_classification_metrics,
     compute_regression_metrics,
     get_time,
 )
@@ -75,15 +75,10 @@ def main(cfg: DictConfig):
         partial(prepocess, label_name=config.data.label_name), batched=True, num_proc=10
     )
     print("Preprocessed dataset successfully.")
-    print(dset)
 
     train_dataset = dset["train"]
     val_dataset = dset["val"]
     test_dataset = dset["test"]
-
-    print(f"Train dataset size: {len(train_dataset)}")
-    print(f"Validation dataset size: {len(val_dataset)}")
-    print(f"Test dataset size: {len(test_dataset)}")
 
     # a default collator for padding
     data_collator = DataCollatorWithPadding(tokenizer)
@@ -99,7 +94,7 @@ def main(cfg: DictConfig):
     compute_metrics_fn = (
         compute_regression_metrics
         if config.general.task_type == "regression"
-        else compute_multi_class_classification_metrics
+        else compute_classification_metrics
     )
 
     if config.general.wandb:
