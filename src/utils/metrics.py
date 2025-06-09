@@ -11,24 +11,17 @@ def compute_regression_metrics(pred):
     metric1 = load("r_squared", trust_remote_code=True)
     metric2 = load("mae", trust_remote_code=True)
     metric3 = load("mse", trust_remote_code=True)
-    metric4 = load("mse", trust_remote_code=True)
-    metric5 = load("spearmanr", trust_remote_code=True)
+    metric4 = load("spearmanr", trust_remote_code=True)
 
     r2 = metric1.compute(predictions=predictions, references=labels)
     mae = metric2.compute(predictions=predictions, references=labels)["mae"]
-    mse = metric3.compute(predictions=predictions, references=labels, squared=True)[
-        "mse"
-    ]
-    rmse = metric4.compute(predictions=predictions, references=labels, squared=False)[
-        "mse"
-    ]
-    spearmanr = metric5.compute(predictions=predictions, references=labels)["spearmanr"]
+    mse = metric3.compute(predictions=predictions, references=labels)["mse"]
+    spearmanr = metric4.compute(predictions=predictions, references=labels)["spearmanr"]
 
     return {
         "r2": r2,
         "mae": mae,
         "mse": mse,
-        "rmse": rmse,
         "spearmanr": spearmanr,
     }
 

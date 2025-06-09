@@ -30,7 +30,6 @@ def get_time(func):
     return wrapper
 
 
-
 def apply_scaling(
     dataset: HFDataset,
     scaling_method="standard",
@@ -81,8 +80,8 @@ def apply_scaling(
 
     return dataset
 
-def scale(dset: HFDataset, scale_method: str):
 
+def scale(dset: HFDataset, scale_method: str):
     match scale_method:
         case "std":
             scaler = StandardScaler()
