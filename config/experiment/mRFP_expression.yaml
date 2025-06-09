@@ -3,7 +3,7 @@ general:
   seed: 17
   project_name: cds_bart_project
   run_name: finetune_mRFP_expression
-  checkpoint_path: /fsx/s3/project/P240002_mRNA_LLM/checkpoints/finetune/submission  
+  checkpoint_path: /fsx/s3/project/P240002_mRNA_LLM/checkpoints/finetune/submission_test  
   num_gpus: 1
   n_cpus: 10
   n_epochs: 40
