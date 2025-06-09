@@ -1,5 +1,5 @@
 import numpy as np
-import torch as th
+from scipy.special import softmax
 from scipy.stats import spearmanr
 from sklearn.metrics import (
     accuracy_score,
@@ -12,6 +12,7 @@ from sklearn.metrics import (
     recall_score,
     roc_auc_score,
 )
+from sklearn.preprocessing import label_binarize
 
 
 def compute_regression_metrics(eval_pred):
@@ -34,30 +35,75 @@ def compute_regression_metrics(eval_pred):
 
 
 def compute_classification_metrics(eval_pred):
-    # 튜플에서 예측값 추출
-    if isinstance(eval_pred.predictions, tuple):
-        predictions = eval_pred.predictions[0]
+    """
+    Computes classification metrics for either binary or multi-class tasks.
+
+    This function is designed to be used with the Hugging Face Trainer. It
+    automatically detects the number of classes from the model's output logits
+    and adjusts the metric calculations accordingly.
+
+    Args:
+        eval_pred: An `EvalPrediction` object from the Hugging Face Trainer.
+                   It's a tuple containing logits and label_ids.
+
+    Returns:
+        dict: A dictionary of computed metrics (e.g., accuracy, f1, auroc).
+    """
+
+    logits, labels = eval_pred.predictions, eval_pred.label_ids
+
+    if isinstance(logits, tuple):
+        logits = logits[0]
+
+    predictions = np.argmax(logits, axis=-1)
+    probabilities = softmax(logits, axis=1)
+
+    num_labels = logits.shape[1]
+
+    # Initialize the metrics dictionary
+    metrics = {}
+
+    # --- METRICS CALCULATION ---
+
+    if num_labels == 2:
+        # --- BINARY CLASSIFICATION ---
+        positive_class_probs = probabilities[:, 1]
+
+        # Use 'binary' averaging for binary-specific metrics
+        metrics["accuracy"] = accuracy_score(labels, predictions)
+        metrics["f1"] = f1_score(labels, predictions, average="binary")
+        metrics["recall"] = recall_score(labels, predictions, average="binary")
+        metrics["precision"] = precision_score(labels, predictions, average="binary")
+
+        # AUROC and AUPRC for binary classification
+        metrics["auroc"] = roc_auc_score(labels, positive_class_probs)
+        metrics["auprc"] = average_precision_score(labels, positive_class_probs)
+
     else:
-        predictions = eval_pred.predictions
+        # --- MULTI-CLASS CLASSIFICATION ---
+        avg_method = "macro"
 
-    probability = th.softmax(predictions, dim=-1).numpy()[:, 1]
-    predictions = th.argmax(predictions, axis=-1).numpy()
-    labels = eval_pred.label_ids
+        metrics["accuracy"] = accuracy_score(labels, predictions)
+        metrics["f1_macro"] = f1_score(labels, predictions, average=avg_method)
+        metrics["recall_macro"] = recall_score(labels, predictions, average=avg_method)
+        metrics["precision_macro"] = precision_score(
+            labels, predictions, average=avg_method
+        )
 
-    predictions = predictions.reshape(-1)
-    labels = labels.reshape(-1)
+        labels_binarized = label_binarize(labels, classes=np.arange(num_labels))
 
-    auroc = roc_auc_score(labels, probability, multi_class="ovr")
-    auprc = average_precision_score(labels, probability)
-    precision = precision_score(labels, predictions)
-    recall = recall_score(labels, predictions)
-    f1 = f1_score(labels, predictions, average="macro")
-    accuracy = accuracy_score(labels, predictions)
-    return {
-        "auroc": auroc,
-        "auprc": auprc,
-        "precision": precision,
-        "recall": recall,
-        "f1": f1,
-        "accuracy": accuracy,
-    }
+        metrics["auroc_macro"] = roc_auc_score(
+            labels, probabilities, multi_class="ovr", average="macro"
+        )
+        metrics["auroc_weighted"] = roc_auc_score(
+            labels, probabilities, multi_class="ovr", average="weighted"
+        )
+
+        metrics["auprc_macro"] = average_precision_score(
+            labels_binarized, probabilities, average="macro"
+        )
+        metrics["auprc_weighted"] = average_precision_score(
+            labels_binarized, probabilities, average="weighted"
+        )
+
+    return metrics
