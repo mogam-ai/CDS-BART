@@ -43,12 +43,12 @@ To install the necessary packages for this project, we use [`uv`](https://github
 ## Finetune
 
 ```bash
-python src/run_finetune.py +experiment=mRFP_exxpression.yaml
+python src/run_finetune.py +experiment=mRFP_expression.yaml
 
 ```
 or 
 ```bash 
-uv run python src/run_finetune.py +experiment=mRFP_exxpression
+uv run python src/run_finetune.py +experiment=mRFP_expression
 ```
 
 <!-- Pretrain -->
