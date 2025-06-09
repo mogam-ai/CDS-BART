@@ -13,7 +13,7 @@ general:
   task_type: "regression"
   task_name: "fungal_expression"
   num_labels: 1
-  wandb: true
+  wandb: false
 
 wandb_config:
   entity: "mogam-research"

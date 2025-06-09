@@ -13,7 +13,7 @@ general:
   task_type: "classification"
   task_name: "ecoli_protein"
   num_labels: 3
-  wandb: true
+  wandb: false
 
 wandb:
   entity: "mogam-research"
