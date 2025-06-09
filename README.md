@@ -9,7 +9,7 @@ This repository contains the code for training and evaluating the CDS-BART model
 <!-- Installation -->
 ## Installation
 
-To install the necessary packages for this project, we use [`uv`](https://github.com/username/uv). This package management tool simplifies dependency management and ensures a reproducible environment.
+To install the necessary packages for this project, we use [`uv`](https://docs.astral.sh/uv/getting-started/installation/). This package management tool simplifies dependency management and ensures a reproducible environment.
 <jp align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
