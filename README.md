@@ -16,21 +16,29 @@ To install the necessary packages for this project, we use [`uv`](https://docs.a
 <!-- Installation -->
 ### Steps to Install Packages
 
-1. **Clone the Repository**
+1. **Install uv**
+   If you haven't installed `uv` yet, you can do so by following the instructions on the [uv installation page](https://docs.astral.sh/uv/getting-started/installation/).
+
+   ```bash
+   curl -LsSf https://astral.sh/uv/install.sh | sh
+   ```
+
+
+2. **Clone the Repository**
    First, clone the repository to your local machine using the following command:
 
    ```bash
    git clone https://github.com/mogam-ai/CDS-BART
 
 
-2. **Navigate to the Project Directory**
+3. **Navigate to the Project Directory**
    Change into the project directory:
 
    ```bash
    cd CDS-BART
    ```
    
-3. **Install Dependencies**
+4. **Install Dependencies**
    Use the `uv` package manager to install the required dependencies. Run the following command:
 
    ```bash
@@ -39,7 +47,7 @@ To install the necessary packages for this project, we use [`uv`](https://docs.a
 
   This command will read the `project.toml` file in the project directory and install all specified packages. 
 
-4. **Activate environment**
+5. **Activate environment**
    ```bash
    source .venv/bin/activate
    ```
