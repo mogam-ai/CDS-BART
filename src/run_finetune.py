@@ -109,6 +109,11 @@ def main(cfg: DictConfig):
             config=config,
         )
         print("WandB initialized successfully.")
+        training_args.report_to = "wandb"
+
+    else:
+        print("WandB is not enabled, using default logging.")
+        training_args.report_to = "none"
 
     # Trainer
     trainer = Trainer(

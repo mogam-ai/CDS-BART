@@ -3,7 +3,7 @@ general:
   seed: 17
   project_name: cds_bart_project
   run_name: finetune_mRFP_expression
-  checkpoint_path: /fsx/s3/project/P240002_mRNA_LLM/checkpoints/finetune/submission_test  
+  checkpoint_path: /fsx/s3/project/P240002_mRNA_LLM/checkpoints/finetune/submission
   num_gpus: 1
   n_cpus: 10
   n_epochs: 40
@@ -54,7 +54,6 @@ hg:
     gradient_accumulation_steps: 1
     dataloader_num_workers: 10
     metric_for_best_model: eval_loss
-    report_to: wandb
     greater_is_better: false
     load_best_model_at_end: true
     lr_scheduler_type: linear

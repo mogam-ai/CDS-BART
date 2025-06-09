@@ -15,7 +15,7 @@ general:
   num_labels: 1
   wandb: true
 
-wandb:
+wandb_config:
   entity: "mogam-research"
   project: ${general.project_name}
   name: ${general.run_name}
@@ -53,7 +53,6 @@ hg:
     gradient_accumulation_steps: 1
     dataloader_num_workers: 10
     metric_for_best_model: eval_loss
-    report_to: wandb
     greater_is_better: false
     load_best_model_at_end: true
     lr_scheduler_type: linear
