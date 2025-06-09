@@ -9,13 +9,13 @@ general:
   n_epochs: 40
   repo_id: "mogam-ai"
   model_name: "CDS-BART-denoising"
-  dataset_name: "mogam-ai/CDS-BART-Ecoli-proteins"
+  dataset_name: "CDS-BART-Ecoli-proteins"
   task_type: "classification"
   task_name: "ecoli_protein"
   num_labels: 3
-  wandb: false
+  wandb: true
 
-wandb:
+wandb_config:
   entity: "mogam-research"
   project: ${general.project_name}
   name: ${general.run_name}

@@ -30,7 +30,6 @@ def main(cfg: DictConfig):
 
     # load the config file
     config = OmegaConf.create(OmegaConf.to_container(cfg))
-    print(OmegaConf.to_yaml(config))
 
     # Load the tokenizer for mRNA
     tokenizer = BartTokenizerFast.from_pretrained(config.data.tokenizer_name_or_path)
