@@ -50,7 +50,6 @@ hg:
     adam_beta1: 0.9
     adam_beta2: 0.999
     adam_epsilon: 1.0e-08
-    weight_decay: 0.01
     gradient_accumulation_steps: 1
     dataloader_num_workers: 10
     metric_for_best_model: eval_loss

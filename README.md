@@ -63,7 +63,7 @@ python src/run_finetune.py +experiment=mRFP_expression.yaml
 ```
 or 
 ```bash 
-uv run python src/run_finetune.py +experiment=mRFP_expression
+uv run src/run_finetune.py  +experiment=mRFP_expression general.checkpoint_path="user_checkpoint_path"
 ```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
