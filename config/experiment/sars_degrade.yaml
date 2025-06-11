@@ -1,24 +1,33 @@
 # @package _global_
 general:
   seed: 17
-  project_name: Ecoli_classification_seq2seq(ckp2)_basic
-  run_name: Ecoli_classification_2
-  checkpoint_path: /fsx/s3/project/P240002_mRNA_LLM/checkpoints/finetune
+  project_name: cds_bart_project
+  run_name: test_mRFP_classification
+  checkpoint_path: /fsx/s3/project/P240002_mRNA_LLM/checkpoints/finetune/submission
   num_gpus: 1
   n_cpus: 10
   n_epochs: 40
-wandb:
+  repo_id: "mogam-ai"
+  model_name: "CDS-BART-denoising"
+  dataset_name: "CDS-BART-SARS-CoV-2-vaccine-degradation"
+  task_type: "regression"
+  task_name: "sars_degradation"
+  num_labels: 1
+  wandb: false
+
+wandb_config:
   entity: "mogam-research"
   project: ${general.project_name}
   name: ${general.run_name}
   tags:
-  - rna
+  - cds-bart
   - finetune
-  - multi class
+  - ${general.task_type}
+  - ${general.task_name}
 data:
-  datapath: /fsx/s3/project/P240002_mRNA_LLM/evaluation/codonbert_dataset/E.Coli_proteins_train_val_test
-  tokenizer_path: /fsx/s3/project/P240002_mRNA_LLM/rna_data/tokens/rna_spmbpe_60M/BartSPBPETokenizerFast
-  pretrained: /fsx/s3/project/P240002_mRNA_LLM/checkpoints/bart_seq2seq_noise_850_large_last/checkpoint-316395
+  dataset_name_or_path: ${general.repo_id}/${general.dataset_name}
+  model_name_or_path: ${general.repo_id}/${general.model_name}
+  tokenizer_name_or_path: ${general.repo_id}/${general.model_name}
   label_name: 'y'
   max_len: 850
   vocab_size: 4096

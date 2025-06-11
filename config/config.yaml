@@ -5,7 +5,7 @@ defaults:
   - lora: lora_default
   - hg: hg_default
   - lg: lg_default
-  - wandb: wandb_default
+  - wandb_config: wandb_default
   - override hydra/hydra_logging: disabled
   - override hydra/job_logging: disabled
 hydra:

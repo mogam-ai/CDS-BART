@@ -5,14 +5,69 @@ Repository for the paper "CDS-BART: A BART-based model for codon-optimized prote
 
 ## Overview
 This repository contains the code for training and evaluating the CDS-BART model, which is a BART-based model. The model is predict mRNA downstream of tasks. The model is trained on a large dataset of mRNA sequences.
-### Installation
- 
-Dependency management is using conda. To create the environment, run:
-```
-conda env create -f environment.yaml
+
+<!-- Installation -->
+## Installation
+
+To install the necessary packages for this project, we use [`uv`](https://docs.astral.sh/uv/getting-started/installation/). This package management tool simplifies dependency management and ensures a reproducible environment.
+<jp align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- Installation -->
+### Steps to Install Packages
+
+1. **Install uv**
+   If you haven't installed `uv` yet, you can do so by following the instructions on the [uv installation page](https://docs.astral.sh/uv/getting-started/installation/). Run follwowing command in your terminal to install `uv`:
+
+   ```bash
+   curl -LsSf https://astral.sh/uv/install.sh | sh
+   ```
+
+
+2. **Clone the Repository**
+   First, clone the repository to your local machine using the following command:
+
+   ```bash
+   git clone https://github.com/mogam-ai/CDS-BART
+
+
+3. **Navigate to the Project Directory**
+   Change into the project directory:
+
+   ```bash
+   cd CDS-BART
+   ```
+   
+4. **Install Dependencies**
+   Use the `uv` package manager to install the required dependencies. Run the following command:
+
+   ```bash
+   uv sync
+   ```
+
+  This command will read the `project.toml` file in the project directory and install all specified packages. 
+
+5. **Activate environment**
+   ```bash
+   source .venv/bin/activate
+   ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- Finetune -->
+## Finetune
+
+```bash
+python src/run_finetune.py +experiment=mRFP_expression.yaml
 
 ```
+or 
+```bash 
+uv run python src/run_finetune.py +experiment=mRFP_expression
+```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- Pretrain -->
 ## Pretrain 
 
 ```bash
@@ -20,15 +75,13 @@ conda env create -f environment.yaml
 python src/run_pretrain.py +experiment=pretrain.yaml
 
 ```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Finetune
+<!-- Finetune datasets -->
+## Finetune datasets:
 
-```bash
-python src/run_finetune.py +experiment=finetune_codon_bert.yaml
+We used several datasets for finetuning the CDS-BART model. These datasets are crucial for training the model to understand and generate codon-optimized protein sequences. Each dataset is described below and can be accessed our huggingface repository [here](https://huggingface.co/mogam-ai).
 
-```
-
-Finetune data:
 1. mRFP expression data set(Nieuwkoop et al. 2023) : profiles protein production levels for several gene variants in Escherichia coli(E. coli). It measures the expression of monomeric Red Fluorescent Protein (mRFP), providing insights into how different gene variants influence protein production levels in bacterial systems.
 2. Fungal expression data set (Grigoriev et al. 2014) :
 provides a valuable resource for studying gene expression and functional genomics in fungal species.
@@ -41,19 +94,28 @@ includes thousands of mRNA stability profiles obtained from various species, inc
 consists of tetracycline (Tc) riboswitch dimer sequences positioned upstream of a Green Fluorescent Protein (GFP) mRNA. The measured variable is the switching factor, which quantifies the differential effect of the riboswitch in the presence or absence of tetracycline, providing insights into gene regulation mechanisms.
 6. SARS-CoV-2 vaccine degradation (Leppek et al. 2022) :
 encompasses a collection of mRNA sequences optimized for structural features, stability, and translation efficiency. The average degradation at 50°C with magnesium ions (deg_Mg_50C) values at each nucleotide position is used as the sequence-level target. This data is critical for understanding and improving the stability and efficacy of mRNA-based vaccines, such as those developed for SARS-CoV-2.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Citation
-If you find the model useful in your research, please cite our paper:
+<!-- Finetune datasets -->
+## Dataset citations
 
-Finetuning dataset incitation :
 1. Nieuwkoop, Thijs, et al. "Revealing determinants of translation efficiency via whole-gene codon randomization and machine learning." Nucleic acids research 51.5 (2023): 2363-2376.
 2.
 3. Ding, Zundan, et al. "MPEPE, a predictive approach to improve protein expression in E. coli based on deep learning." Computational and Structural Biotechnology Journal 20 (2022): 1142-1153.
 4. Diez, Michay, et al. "iCodon customizes gene expression based on the codon composition." Scientific Reports 12.1 (2022): 12126.
 5. Groher, Ann-Christin, et al. "Tuning the performance of synthetic riboswitches using machine learning." ACS synthetic biology 8.1 (2018): 34-44
 6. Leppek, Kathrin, et al. "Combinatorial optimization of mRNA structure, stability, and translation for RNA-based therapeutics." Nature communications 13.1 (2022): 1536.
-```bibtex
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- Citation -->
+## Citation
+If you find the model useful in your research, please cite our paper:
+
+
+```bibtex
 @article{your_paper,
   title={CDS-BART: A BART-based model for codon-optimized protein sequence generation},
   author={Your Name},
@@ -65,3 +127,4 @@ Finetuning dataset incitation :
   publisher={.}
 }
 ```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
