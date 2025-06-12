@@ -116,7 +116,7 @@ encompasses a collection of mRNA sequences optimized for structural features, st
 ## Dataset citations
 
 1. Nieuwkoop, Thijs, et al. "Revealing determinants of translation efficiency via whole-gene codon randomization and machine learning." Nucleic acids research 51.5 (2023): 2363-2376.
-2.
+2. Wint R, Salamov A, Grigoriev IV. Kingdom-Wide Analysis of Fungal Protein-Coding and tRNA Genes Reveals Conserved Patterns of Adaptive Evolution, Molecular Biology and Evolution (2022):39. 
 3. Ding, Zundan, et al. "MPEPE, a predictive approach to improve protein expression in E. coli based on deep learning." Computational and Structural Biotechnology Journal 20 (2022): 1142-1153.
 4. Diez, Michay, et al. "iCodon customizes gene expression based on the codon composition." Scientific Reports 12.1 (2022): 12126.
 5. Groher, Ann-Christin, et al. "Tuning the performance of synthetic riboswitches using machine learning." ACS synthetic biology 8.1 (2018): 34-44
