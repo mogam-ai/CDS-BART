@@ -2,21 +2,21 @@
 general:
   seed: 17
   project_name: cds_bart_project
-  run_name: test_mRFP_classification
-  checkpoint_path: /fsx/s3/project/P240002_mRNA_LLM/checkpoints/finetune/submission
+  run_name: test_mrna_stability
+  checkpoint_path: /fsx/s3/project/P240002_mRNA_LLM/checkpoints/finetune/CDS_BART_finetuning
   num_gpus: 1
   n_cpus: 10
   n_epochs: 40
   repo_id: "mogam-ai"
   model_name: "CDS-BART-denoising"
-  dataset_name: "CDS-BART-SARS-CoV-2-vaccine-degradation"
+  dataset_name: "CDS-BART-mRNA-stability"
   task_type: "regression"
-  task_name: "sars_degradation"
+  task_name: "mrna_stability"
   num_labels: 1
-  wandb: false
+  wandb: true
 
 wandb_config:
-  entity: "mogam-research"
+  entity: sangheon-lee-mibr
   project: ${general.project_name}
   name: ${general.run_name}
   tags:
@@ -31,7 +31,7 @@ data:
   label_name: 'y'
   max_len: 850
   vocab_size: 4096
-  batch_size: 64
+  batch_size: 128
   num_workers: 30
   pin_memory: true
 hg:
@@ -56,7 +56,7 @@ hg:
     report_to: wandb
     greater_is_better: false
     load_best_model_at_end: true
-    lr_scheduler_type: linear
+    lr_scheduler_type: cosine
     max_grad_norm: 1.0
     warmup_ratio: 0.1
-    learning_rate: 1.0e-05
+    learning_rate: 2.0e-05

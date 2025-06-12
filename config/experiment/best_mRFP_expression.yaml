@@ -2,21 +2,21 @@
 general:
   seed: 17
   project_name: cds_bart_project
-  run_name: test_mRFP_classification
-  checkpoint_path: /fsx/s3/project/P240002_mRNA_LLM/checkpoints/finetune/submission
+  run_name: finetune_mRFP_expression
+  checkpoint_path: /fsx/s3/project/P240002_mRNA_LLM/checkpoints/finetune/CDS_BART_finetuning
   num_gpus: 1
   n_cpus: 10
   n_epochs: 40
   repo_id: "mogam-ai"
   model_name: "CDS-BART-denoising"
-  dataset_name: "CDS-BART-SARS-CoV-2-vaccine-degradation"
+  dataset_name: "CDS-BART-mRFP-expression"
   task_type: "regression"
-  task_name: "sars_degradation"
+  task_name: "mRFP_expression"
   num_labels: 1
-  wandb: false
+  wandb: true
 
 wandb_config:
-  entity: "mogam-research"
+  entity: sangheon-lee-mibr
   project: ${general.project_name}
   name: ${general.run_name}
   tags:
@@ -29,6 +29,7 @@ data:
   model_name_or_path: ${general.repo_id}/${general.model_name}
   tokenizer_name_or_path: ${general.repo_id}/${general.model_name}
   label_name: 'y'
+  scaling_method: 'std' # 'std' for standard and  'min_max' min_max scaling , 'no' for no scaling
   max_len: 850
   vocab_size: 4096
   batch_size: 64
@@ -45,7 +46,7 @@ hg:
     save_strategy: epoch
     per_device_train_batch_size: ${data.batch_size}
     per_device_eval_batch_size: ${data.batch_size}
-    logging_steps: 50
+    logging_steps: 10
     adam_beta1: 0.9
     adam_beta2: 0.999
     adam_epsilon: 1.0e-08
@@ -53,10 +54,9 @@ hg:
     gradient_accumulation_steps: 1
     dataloader_num_workers: 10
     metric_for_best_model: eval_loss
-    report_to: wandb
     greater_is_better: false
     load_best_model_at_end: true
     lr_scheduler_type: linear
     max_grad_norm: 1.0
     warmup_ratio: 0.1
-    learning_rate: 1.0e-05
+    learning_rate: 2.0e-05

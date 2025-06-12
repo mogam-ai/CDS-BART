@@ -2,8 +2,8 @@
 general:
   seed: 17
   project_name: cds_bart_project
-  run_name: test_mRFP_classification
-  checkpoint_path: /fsx/s3/project/P240002_mRNA_LLM/checkpoints/finetune/submission
+  run_name: test_sars_degradation_lr1_batch4
+  checkpoint_path: /fsx/s3/project/P240002_mRNA_LLM/checkpoints/finetune/CDS_BART_finetuning
   num_gpus: 1
   n_cpus: 10
   n_epochs: 40
@@ -13,10 +13,10 @@ general:
   task_type: "regression"
   task_name: "sars_degradation"
   num_labels: 1
-  wandb: false
+  wandb: true
 
 wandb_config:
-  entity: "mogam-research"
+  entity: sangheon-lee-mibr
   project: ${general.project_name}
   name: ${general.run_name}
   tags:
@@ -31,7 +31,7 @@ data:
   label_name: 'y'
   max_len: 850
   vocab_size: 4096
-  batch_size: 64
+  batch_size: 4
   num_workers: 30
   pin_memory: true
 hg:
@@ -45,10 +45,10 @@ hg:
     save_strategy: epoch
     per_device_train_batch_size: ${data.batch_size}
     per_device_eval_batch_size: ${data.batch_size}
-    logging_steps: 50
+    logging_steps: 1
     adam_beta1: 0.9
     adam_beta2: 0.999
-    adam_epsilon: 1.0e-08
+    adam_epsilon: 0.00000001 
     weight_decay: 0.01
     gradient_accumulation_steps: 1
     dataloader_num_workers: 10
