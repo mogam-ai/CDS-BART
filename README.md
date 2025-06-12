@@ -1,7 +1,9 @@
 
-# CDS-BART
+# CDS-BART: A BART-Based Foundation Model for mRNA Sequence Analysis
 
-Repository for the paper "CDS-BART: A BART-based model for codon-optimized protein sequence generation".
+### CDS-BART
+CDS-BART is designed as an easy-to-use tool, facilitating accessibility for researchers to leveraage the development of mRNA vaccines and therapeutics. It is a BART-based foundation model that can be finetuned for various mRNA downstream tasks, such as protein expression prediction, mRNA stability prediction, and riboswitch activity prediction. The model is trained on a large dataset of mRNA sequences and freely available for use in the scientific community.
+CDS-BART pretrained model and datasets are available at [Hugging Face](https://huggingface.co/mogam-ai/CDS-BART).
 
 ## Overview
 This repository contains the code for training and evaluating the CDS-BART model, which is a BART-based model. The model is predict mRNA downstream of tasks. The model is trained on a large dataset of mRNA sequences.
@@ -51,6 +53,7 @@ To install the necessary packages for this project, we use [`uv`](https://docs.a
    ```bash
    source .venv/bin/activate
    ```
+   you do not need to activate the environment if you are using uv run command. 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -61,10 +64,23 @@ To install the necessary packages for this project, we use [`uv`](https://docs.a
 python src/run_finetune.py +experiment=mRFP_expression.yaml
 
 ```
-or 
+or using uv run command:
 ```bash 
 uv run src/run_finetune.py  +experiment=mRFP_expression general.checkpoint_path="user_checkpoint_path"
 ```
+### Explanation for Users:
+In the command above, you need to replace user_checkpoint_path with your desired path where you want to save the finetuning checkpoints. There are six different YAML file options available for benchmark datasets, including:
+
+- ecoli_proteins.yaml
+- fungal_expression.yaml
+- mRFP_expression.yaml
+- mrna_stability.yaml
+- sars.degrade.yaml
+- tc_riboswitch.yaml
+
+If you want to use a benchmark dataset, choose one of these YAML files. If you prefer to use your custom dataset, you will need to create a custom.yaml template similar to the existing ones, making only the necessary changes to reflect your custom dataset and any parameter adjustments.
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- Pretrain -->
