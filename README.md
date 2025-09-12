@@ -3,7 +3,7 @@
 
 ### CDS-BART
 CDS-BART is designed as an easy-to-use tool, facilitating accessibility for researchers to leverage the development of mRNA vaccines and therapeutics. It is a BART-based foundation model that can be finetuned for various mRNA downstream tasks, such as protein expression prediction, mRNA stability prediction, and riboswitch activity prediction. The model is trained on a large dataset of mRNA sequences and freely available for use in the scientific community.
-CDS-BART pretrained model and datasets are available at [Hugging Face](https://huggingface.co/mogam-ai/CDS-BART).
+CDS-BART pretrained model and datasets are available at [Hugging Face](https://huggingface.co/mogam-ai).
 
 ## Overview
 This repository contains the code for training and evaluating the CDS-BART model, which is a BART-based model. The model is predict mRNA downstream of tasks. The model is trained on a large dataset of mRNA sequences.
