@@ -3,6 +3,8 @@
 <div align="center">
 
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://python.org)
+[![uv](https://img.shields.io/badge/uv-package%20manager-orange)](https://github.com/astral-sh/uv)
+[![Hydra](https://img.shields.io/badge/Config-Hydra-blue)](https://hydra.cc/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Hugging Face](https://img.shields.io/badge/🤗-Hugging%20Face-yellow)](https://huggingface.co/mogam-ai)
 
