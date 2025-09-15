@@ -48,9 +48,8 @@ uv run src/run_finetune.py +experiment=mRFP_expression.yaml \
 ## 📦 Installation
 
 ### 📋 Prerequisites
-- Python 3.8+
+- Python 3.10+
 - CUDA-compatible GPU (recommended)
-- 8GB+ RAM
 
 ### 🛠️ Setup Steps
 
