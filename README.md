@@ -80,17 +80,25 @@ In the command above, you need to replace user_checkpoint_path with your desired
 
 If you want to use a benchmark dataset, choose one of these YAML files. If you prefer to use your custom dataset, you will need to create a custom.yaml template similar to the existing ones, making only the necessary changes to reflect your custom dataset and any parameter adjustments.
 
+### Required User Configuration
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+Before running experiments, you must configure two user-specific parameters:
 
-<!-- Pretrain -->
-## Pretrain 
-
+**1. Checkpoint Path**: Set your local directory for saving model checkpoints
 ```bash
-
-python src/run_pretrain.py +experiment=pretrain.yaml
-
+uv run src/run_finetune.py +experiment=mRFP_expression.yaml general.checkpoint_path="/your/local/checkpoint/directory"
 ```
+
+**2. Weights & Biases (Optional)**: If using wandb for experiment tracking, set your entity name
+```bash
+uv run src/run_finetune.py +experiment=mRFP_expression.yaml wandb_config.entity="your_wandb_entity"
+```
+
+**Combined Example**:
+```bash
+uv run src/run_finetune.py +experiment=mRFP_expression.yaml general.checkpoint_path="/home/user/checkpoints" wandb_config.entity="your_entity"
+```
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- Finetune datasets -->
