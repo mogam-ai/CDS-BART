@@ -3,7 +3,7 @@ general:
   seed: 17
   project_name: cds_bart_project
   run_name: finetune_ecoli_protein_fix_code
-  checkpoint_path: /fsx/s3/project/P240002_mRNA_LLM/checkpoints/finetune/CDS_BART_finetuning
+  checkpoint_path: "USER_MUST_SET_CHECKPOINT_PATH"  # Set your local checkpoint directory
   num_gpus: 1
   n_cpus: 10
   n_epochs: 20
@@ -16,7 +16,7 @@ general:
   wandb: true
 
 wandb_config:
-  entity: sangheon-lee-mibr
+  entity: "USER_MUST_SET_WANDB_ENTITY"  # Set your wandb entity name if using wandb
   project: ${general.project_name}
   name: ${general.run_name}
   tags:
