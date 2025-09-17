@@ -98,9 +98,9 @@ test.py
 README_old.md
 
 # Example code
-./examples/results
-./examples/2.ecoli_get_embed2.py
-./examples/1.taxonomy_get_embed.py
-./examples/2.get_embed.py
-./examples/2.taxonomy_get_embed.py
-./examples/3.ecoli_umap_viz.ipynb
+examples/results
+examples/2.ecoli_get_embed2.py
+examples/1.taxonomy_get_embed.py
+examples/2.get_embed.py
+examples/2.taxonomy_get_embed.py
+examples/3.ecoli_umap_viz.ipynb
