@@ -137,29 +137,35 @@ wandb_config:
 
 Our benchmark datasets cover diverse mRNA analysis tasks:
 
-### 🔬 **1. mRFP Expression** (Nieuwkoop et al. 2023)
+### 🔬 **1. mRFP Expression**
 - **Task:** Protein production prediction in E. coli
 - **Target:** monomeric Red Fluorescent Protein expression levels
+- **Reference:** Nieuwkoop, Thijs, et al. "Revealing determinants of translation efficiency via whole-gene codon randomization and machine learning." Nucleic acids research 51.5 (2023): 2363-2376.
 
-### 🍄 **2. Fungal Expression** (Grigoriev et al. 2014)
+### 🍄 **2. Fungal Expression**
 - **Task:** Gene expression analysis in fungal species
 - **Application:** Functional genomics research
+- **Reference:** Wint R, Salamov A, Grigoriev IV. Kingdom-Wide Analysis of FungalProtein-Coding and tRNA Genes Reveals Conserved Patterns of Adaptive Evolution, Molecular Biology and Evolution (2022):39.
 
-### 🦠 **3. E.coli Proteins** (Ding et al. 2022)
+### 🦠 **3. E.coli Proteins**
 - **Task:** Expression level classification (low/medium/high)
 - **Data:** 2,308 low, 2,067 medium, 1,973 high expression samples
+- **Reference:** Ding, Zundan, et al. "MPEPE, a predictive approach to improve protein expression in E. coli based on deep learning." Computational and Structural Biotechnology Journal 20 (2022): 1142-1153.
 
-### 🧬 **4. mRNA Stability** (Diez et al. 2022)
+### 🧬 **4. mRNA Stability**
 - **Task:** Cross-species mRNA stability prediction
 - **Species:** Human, mouse, frog, fish
+- **Reference:** Diez, Michay, et al. "iCodon customizes gene expression based on the codon composition." Scientific Reports 12.1 (2022): 12126.
 
-### 🔄 **5. Tc-Riboswitch** (Groher et al. 2019)
+### 🔄 **5. Tc-Riboswitch**
 - **Task:** Riboswitch activity prediction
 - **Target:** Tetracycline switching factor
+- **Reference:** Groher, Ann-Christin, et al. "Tuning the performance of synthetic riboswitches using machine learning." ACS synthetic biology 8.1 (2018): 34-44
 
-### 💉 **6. SARS-CoV-2 Vaccine** (Leppek et al. 2022)
+### 💉 **6. SARS-CoV-2 Vaccine**
 - **Task:** mRNA vaccine degradation prediction
 - **Target:** Degradation at 50°C with Mg²⁺ ions
+- **Reference:** Leppek, Kathrin, et al. "Combinatorial optimization of mRNA structure, stability, and translation for RNA-based therapeutics." Nature communications 13.1 (2022): 1536.
 
 ## 📚 Citations
 
@@ -178,14 +184,6 @@ If you find CDS-BART useful in your research, please cite our paper:
 }
 ```
 
-### 📖 Dataset References
-
-1. Nieuwkoop, Thijs, et al. "Revealing determinants of translation efficiency via whole-gene codon randomization and machine learning." Nucleic acids research 51.5 (2023): 2363-2376.
-2. Wint R, Salamov A, Grigoriev IV. Kingdom-Wide Analysis of FungalProtein-Coding and tRNA Genes Reveals Conserved Patterns of Adaptive Evolution, Molecular Biology and Evolution (2022):39.
-3. Ding, Zundan, et al. "MPEPE, a predictive approach to improve protein expression in E. coli based on deep learning." Computational and Structural Biotechnology Journal 20 (2022): 1142-1153.
-4. Diez, Michay, et al. "iCodon customizes gene expression based on the codon composition." Scientific Reports 12.1 (2022): 12126.
-5. Groher, Ann-Christin, et al. "Tuning the performance of synthetic riboswitches using machine learning." ACS synthetic biology 8.1 (2018): 34-44
-6. Leppek, Kathrin, et al. "Combinatorial optimization of mRNA structure, stability, and translation for RNA-based therapeutics." Nature communications 13.1 (2022): 1536.
 
 ## 🤝 Contributing
 
