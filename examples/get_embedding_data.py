@@ -1,7 +1,7 @@
 
 import pandas as pd
 from pathlib import Path
-from datasets import load_from_disk
+from datasets import load_dataset
 from huggingface_hub import login
 
 import torch, os, sys
@@ -12,10 +12,7 @@ from transformers import (
 )
 
 # 환경 setting
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"
-
-# Huggingface login
-login('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')
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 # output directory 만들기
 out_dir = Path('./results')
@@ -28,9 +25,8 @@ repo_id = "mogam-ai/CDS-BART-denoising"
 model = BartModel.from_pretrained(repo_id)
 tokenizer = BartTokenizer.from_pretrained(repo_id)
 data_collator = DataCollatorWithPadding(tokenizer)
+data_repo_id = "mogam-ai/taxonomy-embeddings"
 
-# TODO Huggingface에 저장된 data load하기
-# data = huggingface load
 
 print("Before changing the tokenizer indices")
 print(f"BOS token: {tokenizer.bos_token_id}")
@@ -58,22 +54,25 @@ print(f"CLS token: {tokenizer.cls_token_id}")
 print(f"MASK token: {tokenizer.mask_token_id}")
 
 # load the dataset
-def load_the_dataset(data_path):
-    data = load_from_disk(data_path)
+def load_the_dataset(data_name):
+    data = load_dataset(
+         data_repo_id, 
+        data_files="CDSBART_BEST_3_df.csv")
+    
+    # data = load_from_disk(data_path)
     ds = data['train']
-
     seq_list = ds['sequence']
     label_list = ds['y']
     length_list = [len(seq) for seq in seq_list]
-
+    
     df = pd.DataFrame({'sequence':seq_list, 'y':label_list, 'len':length_list})
     df.to_csv(out_dir.joinpath(f"{data_name}_df.csv"), index=False)
-
+    
     model.to("cuda")
 
     # eos token 추출
     list_emb_no_eos = []
-
+    
     for seq in seq_list: 
         encoded = tokenizer(
         seq, 
@@ -105,5 +104,6 @@ def load_the_dataset(data_path):
     with open(out_dir.joinpath(f"emb_no_eos_{data_name}.pt"), "wb") as f:
         torch.save(emb_no_eos, f)
         
-# 어떤 data로 load 할 것인지 결정
-# load_the_dataset(data_path)
+if __name__ == "__main__":
+    data_name = 'taxonomy'
+    load_the_dataset(data_name)

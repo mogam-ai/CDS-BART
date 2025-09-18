@@ -20,7 +20,7 @@ from utils import (
     get_time,
 )
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "3"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 
 @get_time
