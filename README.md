@@ -175,7 +175,7 @@ If you find CDS-BART useful in your research, please cite our paper:
 @article{cds_bart_2025,
   title={CDS-BART: A BART-based model for codon-optimized protein sequence generation},
   author={Your Name},
-  journal={Bioinformatics: Application Notes},
+  journal={under review},
   year={2025},
   volume={},
   number={},
